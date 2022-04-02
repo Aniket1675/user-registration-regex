@@ -12,8 +12,15 @@ import java.util.Scanner;
 public class UserRegistration {
     // (?=.*[a-z]) # a lower case letter must occur at least once
     // (?=.*[A-Z]) # an upper case letter must occur at least once
+    // (?=.*[0-9]) # a digit must occur at least once
+    // (?=.*[@#$%^&+=]) # a special character must occur at least once
+    // (?=\S+$) # no whitespace allowed in the entire string
+    // .{8,} # anything, at least eight places though
 
 
+    /*
+     Added  first name method to check first name
+    */
     public void firstName() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter First Name is: ");
@@ -26,6 +33,9 @@ public class UserRegistration {
             System.out.println("The first name " + fname + " is invalid.");
         }
     }
+    /*
+     Added  last name method to check last name
+    */
     public void lastName() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Last Name is: ");
@@ -38,7 +48,9 @@ public class UserRegistration {
             System.out.println("The last name " + lname + " is invalid.");
         }
     }
-
+    /*
+     Added eMail method to check EmailID is valid or not
+    */
     public void eMail() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter eMail is: ");
@@ -51,7 +63,9 @@ public class UserRegistration {
             System.out.println("The eMail " + email + " is invalid.");
         }
     }
-
+    /*
+     Added phoneNo method to check phone number is valid or not
+    */
     public void phoneNo() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter Ph. number is: ");
@@ -64,6 +78,21 @@ public class UserRegistration {
             System.out.println("The Ph. number " + phnum + " is invalid.");
         }
     }
+    /*
+     Added password method to check password is valid or not
+    */
+    public void password() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter password is: ");
+        String pass = sc.nextLine();
+        String regexFname = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).{8,}$";
+
+        if (pass.matches(regexFname) == true) {
+            System.out.println("The password " + pass + " is valid.");
+        } else {
+            System.out.println("The password " + pass + " is invalid.");
+        }
+    }
 
     public static void main(String[] args) {
         System.out.println("Welcome to the user registration problem");
@@ -72,5 +101,6 @@ public class UserRegistration {
         regex.lastName();
         regex.eMail();
         regex.phoneNo();
+        regex.password();
     }
 }
